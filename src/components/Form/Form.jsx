@@ -3,17 +3,24 @@ import css from './Form.module.css';
 
 class Form extends Component {
   state = {
-    contacts: [],
     name: '',
   };
 
   handleChange = e => {
-    this.setState({ name: e.target.value });
+    this.setState({
+      name: e.target.value,
+    });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(`Name: ${this.state.name}`);
+    this.props.onSubmit(this.state.name);
+
+    this.reset();
+  };
+
+  reset = () => {
+    this.setState({ name: '' });
   };
 
   render() {
