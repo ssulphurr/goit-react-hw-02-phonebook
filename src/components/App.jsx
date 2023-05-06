@@ -17,15 +17,26 @@ export class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    const contact = {
-      id: nanoid(),
-      name,
-      number,
-    };
+    const match = this.state.contacts.find(contact => {
+      if (contact.name === name) {
+        return name;
+      }
+    });
 
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, contact],
-    }));
+    if (match) {
+      alert(`${name} is already in contacts`);
+      return;
+    } else {
+      const contact = {
+        id: nanoid(),
+        name,
+        number,
+      };
+
+      this.setState(prevState => ({
+        contacts: [...prevState.contacts, contact],
+      }));
+    }
   };
 
   changeFilter = e => {
