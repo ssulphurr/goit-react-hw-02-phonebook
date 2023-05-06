@@ -17,11 +17,9 @@ export class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    const match = this.state.contacts.find(contact => {
-      if (contact.name === name) {
-        return name;
-      }
-    });
+    const match = this.state.contacts.find(contact =>
+      contact.name === name ? name : undefined
+    );
 
     if (match) {
       alert(`${name} is already in contacts`);
