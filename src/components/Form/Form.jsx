@@ -1,32 +1,38 @@
 import React, { Component } from 'react';
 import css from './Form.module.css';
+import { nanoid } from 'nanoid';
 
 class Form extends Component {
   state = {
     name: '',
+    number: '',
   };
 
+  nameInputId = nanoid();
+  numberInputId = nanoid();
+
   handleChange = e => {
+    const { name, value } = e.target;
     this.setState({
-      name: e.target.value,
+      [name]: value,
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state.name);
+    this.props.onSubmit({ ...this.state });
 
     this.reset();
   };
 
   reset = () => {
-    this.setState({ name: '' });
+    this.setState({ name: '', number: '' });
   };
 
   render() {
     return (
       <form className={css.form} onSubmit={this.handleSubmit}>
-        <label className={css.label} htmlFor="">
+        <label className={css.label} htmlFor={this.nameInputId}>
           Name
         </label>
 
@@ -39,6 +45,22 @@ class Form extends Component {
           required
           value={this.state.name}
           onChange={this.handleChange}
+          id={this.nameInputId}
+        />
+
+        <label className={css.label} htmlFor={this.numberInputId}>
+          Number
+        </label>
+        <input
+          className={css.input}
+          type="tel"
+          name="number"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          required
+          value={this.state.number}
+          onChange={this.handleChange}
+          id={this.numberInputId}
         />
 
         <button className={css.btn} type="submit">

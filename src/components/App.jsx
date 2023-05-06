@@ -9,10 +9,11 @@ export class App extends Component {
     contacts: [],
   };
 
-  addContact = name => {
+  addContact = ({ name, number }) => {
     const contact = {
       id: nanoid(),
       name,
+      number,
     };
 
     this.setState(prevState => ({

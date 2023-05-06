@@ -4,10 +4,10 @@ import css from './Contacts.module.css';
 const Contacts = ({ contacts }) => {
   return (
     <ul className={css.contact__list}>
-      {contacts.map(({ id, name }) => {
+      {contacts.map(({ id, name, number }) => {
         return (
           <li key={id} className={css.contact__item}>
-            {name}
+            {name}: {number}
           </li>
         );
       })}
