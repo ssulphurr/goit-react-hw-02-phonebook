@@ -1,16 +1,13 @@
 import React from 'react';
-import css from './Contacts.module.css';
+import css from './ContactList.module.css';
+import Contact from 'components/ContactItem/ContactItem';
 
 const Contacts = ({ contacts }) => {
   return (
     <>
       <ul className={css.contact__list}>
         {contacts.map(({ id, name, number }) => {
-          return (
-            <li key={id} className={css.contact__item}>
-              {name}: {number}
-            </li>
-          );
+          return <Contact key={id} name={name} number={number} />;
         })}
       </ul>
     </>

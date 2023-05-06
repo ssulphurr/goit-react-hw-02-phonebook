@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import Section from './Section/Section';
 import Form from './Form/Form';
 import Filter from './Filter/Filter';
-import Contacts from './Contacts/Contacts';
+import ContactList from './ContactList/ContactList';
 
 export class App extends Component {
   state = {
@@ -48,7 +48,7 @@ export class App extends Component {
 
         <Section title="Contacts">
           <Filter value={filter} onChange={this.changeFilter} />
-          <Contacts contacts={visibleContacts} />
+          <ContactList contacts={visibleContacts} />
         </Section>
       </>
     );
