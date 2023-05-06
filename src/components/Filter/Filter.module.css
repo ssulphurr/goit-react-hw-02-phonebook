@@ -1,5 +1,8 @@
-.contact__list {
+.filter__container {
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+.input {
+  width: 200px;
 }
