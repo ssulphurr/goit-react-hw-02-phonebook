@@ -17,12 +17,14 @@ export class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    const match = this.state.contacts.find(contact =>
-      contact.name === name ? name : undefined
+    const match = this.state.contacts.find(
+      contact =>
+        contact.name.toLowerCase() === name.toLocaleLowerCase() ||
+        contact.number === number
     );
 
     if (match) {
-      alert(`${name} is already in contacts`);
+      alert(`${name} or ${number} is already in contacts`);
       return;
     } else {
       const contact = {
